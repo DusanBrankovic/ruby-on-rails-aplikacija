@@ -14,6 +14,10 @@ group :development, :test do
   gem 'byebug',  '11.1.3', platforms: [:mri, :mingw, :x64_mingw]
 end
 
+group :production do
+  gem 'pg', '1.2.3'
+end
+
 group :development do
   gem 'web-console',        '4.1.0'
   gem 'rack-mini-profiler', '2.3.1'
