@@ -1,8 +1,6 @@
 class ApplicationController < ActionController::Base
-  include SessionsHelper
+  include ::SessionsHelper
   include UsersHelper
-
-  RESULTS_PER_PAGE = 10
 
   add_flash_types :success, :info, :danger, :warning
 
