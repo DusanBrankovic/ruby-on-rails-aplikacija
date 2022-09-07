@@ -1,27 +1,32 @@
-<%= form_with(model: user) do |form| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
-        <% user.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<%= form_with model: user, local: true, data: { turbo: false } do |form| %>
+  <% if is_logged_in? && is_current_user_of_type?('admin_user') %>
+    <div class="mb-3">
+      <%= form.label "Tip korisnika" %><br>
+      <%= select_tag 'user_type', options_for_select(UserType.all.collect{ |ut| [ut.name, ut.id] }, @user.user_type&.id), { :class => "form-control" } %>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="mb-3">
+    <%= form.label "Ime" %><br>
+    <%= form.text_field :first_name, class: "form-control", required: true %>
   </div>
 
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
+  <div class="mb-3">
+    <%= form.label "Prezime" %><br>
+    <%= form.text_field :last_name, class: "form-control", required: true %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="mb-3">
+    <%= form.label "Email" %><br>
+    <%= form.email_field :email_address, class: "form-control", required: true %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label "Sifra" %><br>
+    <%= form.password_field :password, class: "form-control", required: true %>
+  </div>
+
+  <div>
+    <%= form.submit class: "btn btn-success" %>
   </div>
 <% end %>

@@ -1,7 +1,16 @@
 Rails.application.routes.draw do
+  
+  root "home#index", as: :root
+
+  get 'login', to: 'sessions#new', as: :login
+  get 'register', to: 'users#new', as: :register
+
   resources :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  
-  root 'application#hello'
-  
+  resources :sessions
+  resources :user_types
+  resources :workout_types
+  resources :equipment_types
+  resources :equipment
+  resources :workouts
+  resources :exercises
 end

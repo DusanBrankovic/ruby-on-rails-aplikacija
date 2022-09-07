@@ -1,6 +1,16 @@
-<h1>Editing User</h1>
+<%= render "shared/header" %>
 
-<%= render 'form', user: @user %>
-
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <h5 class="card-header py-3">Izmena profila</h5>
+        <div class="card-body">
+          <%= render "shared/flash" %>
+          <%= render "form", user: @user %>
+          <%= link_to 'Nazad', users_path, class: "btn btn-danger"%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

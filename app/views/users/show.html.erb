@@ -1,14 +1,33 @@
-<p id="notice"><%= notice %></p>
+<%= render "shared/header" %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <h3 class="card-header py-3">Profil</h3>
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <th scope="row">Tip korisnika</th>
+              <td><%= @user.user_type.name %></td>
+            </tr>
+            <tr>
+              <th scope="row">Ime</th>
+              <td><%= @user.first_name %></td>
+            </tr>
+            <tr>
+              <th scope="row">Prezime</th>
+              <td><%= @user.last_name %></td>
+            </tr>
+            <tr>
+              <th scope="row">Email</th>
+              <td><%= @user.email_address %></td>
+            </tr>
+          </tbody>
+        </table>
+        <%= link_to "Izmeni", edit_user_path(@user), class: "btn btn-warning" %>
+        <%= link_to 'Nazad', users_path, class: "btn btn-danger"%>
+      </div>
+    </div>
+  </div>
+</div>
