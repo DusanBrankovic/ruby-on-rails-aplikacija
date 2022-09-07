@@ -1,0 +1,27 @@
+<%= render "shared/header" %>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <h3 class="card-header py-3">Pregled opreme</h3>
+        <table class="table table-bordered">
+          <tbody>
+          <tr>
+            <th scope="row">Tipovi</th>
+            <td><%= @equipment.equipment_type.collect{ |ic| [ic.name] }.join(", ") %></td>
+          </tr>
+          <tr>
+            <th scope="row">Naziv</th>
+            <td><%= @equipment.name %></td>
+          </tr>
+          </tbody>
+        </table>
+        <% if is_logged_in? && is_current_user_of_type?('admin_user') %>
+          <%= link_to "Izmeni", edit_equipment_path(@equipment), class: "btn btn-warning" %>
+        <% end %>
+        <%= link_to 'Nazad', workouts_path, class: "btn btn-danger" %>
+      </div>
+    </div>
+  </div>
+</div>

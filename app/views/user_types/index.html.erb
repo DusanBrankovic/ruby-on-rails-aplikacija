@@ -1,0 +1,30 @@
+<%= render "shared/header" %>
+
+<div class="container mt-5">
+  <div class="p-5 bg-light rounded text-center mb-5">
+    <h3 class="display-5">Lista tipova korisnika</h3>
+  </div>
+  <%= render "shared/flash" %>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Ključ</th>
+        <th scope="col">Naziv</th>
+        <th scope="col", class="center">Opcije</th>
+      </tr>
+      </thead>
+      <tbody>
+        <ul class="user_types">
+          <%= render @user_types %>
+        </ul>
+      </tbody>
+    </table>
+  </div>
+  
+  <p class="center">
+    <%= link_to "Dodaj novi tip", new_user_type_path, class: "btn btn-success btn-lg" %>
+    <%= link_to "Nazad", users_path, class: "btn btn-danger btn-lg" %>
+  </p>
+</div>

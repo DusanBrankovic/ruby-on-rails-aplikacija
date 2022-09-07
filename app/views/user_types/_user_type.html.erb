@@ -1,0 +1,10 @@
+<tr>
+  <th scope="row"><%= user_type.id %></th>
+  <td><%= user_type.key %></td>
+  <td><%= user_type.name %></td>
+  <td class="crud-options">
+    <%= link_to "Show", user_type_path(user_type) %>
+    <%= link_to "Edit", edit_user_type_path(user_type) %>
+    <%= link_to "Destroy", {:controller => :user_types, :action => 'destroy', :id => user_type.id }, :method => :delete, local: true, data: { turbo: false } %>
+  </td>
+</tr>

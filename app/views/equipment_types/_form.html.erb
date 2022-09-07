@@ -1,0 +1,15 @@
+<%= form_with model: equipment_type, local: true, data: { turbo: false } do |form| %>
+  <div class="mb-3">
+    <%= form.label "Naziv opreme" %><br>
+    <%= form.text_field :name, class: "form-control", required: true %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label "Opis opreme" %><br>
+    <%= form.text_field :description, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.submit class: "btn btn-success" %>
+  </div>
+<% end %>

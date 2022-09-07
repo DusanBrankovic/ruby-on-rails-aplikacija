@@ -1,0 +1,2 @@
+module EquipmentEquipmentTypesHelper
+end

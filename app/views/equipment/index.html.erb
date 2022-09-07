@@ -1,0 +1,53 @@
+<%= render "shared/header" %>
+
+<div class="container mt-5">
+  <div class="p-5 bg-light rounded text-center mb-5">
+    <h3 class="display-5">Lista opreme</h3>
+  </div>
+  <%= render "shared/flash" %>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Tipovi</th>
+        <th scope="col">Nazic</th>
+        <th scope="col", class="center">Opcije</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @equipment.each do |equipment| %>
+        <tr>
+          <th scope="row"><%= equipment.id %></th>
+          <td><%= equipment.equipment_types.collect{ |ic| [ic.name] }.join(", ") %></td>
+          <td><%= equipment.name %></td>
+          <td class="crud-options">
+            <%= link_to "Show", equipment_path(equipment) %>
+            <%= link_to "Edit", edit_equipment_path(equipment) %>
+            <%= link_to "Destroy", {:controller => :equipment, :action => 'destroy', :id => equipment.id }, :method => :delete, local: true, data: { turbo: false } %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li class="page-item <%= @page-1 < 1 ? "disabled" : "" %>">
+        <%=  link_to raw('<span aria-hidden="true">&laquo;</span>'), equipment_index_pagination_path(@page-1), class: "page-link" %>
+      </li>
+      <% (1..@pages_count).each do |i| %>
+        <li class="page-item <%= i == @page ? "disabled" : "" %>">
+          <%=  link_to i, equipment_index_pagination_path(i), class: "page-link"  %>
+        </li>
+      <% end %>
+      <li class="page-item <%= @page+1 > @pages_count ? "disabled" : "" %>">
+        <%=  link_to raw('<span aria-hidden="true">&raquo;</span>'), equipment_index_pagination_path(@page+1), class: "page-link" %>
+      </li>
+    </ul>
+    
+    <p class="center">
+      <%= link_to "Dodaj novu opremu", new_equipment_path, class: "btn btn-success" %>
+    </p>
+  </nav>
+</div>

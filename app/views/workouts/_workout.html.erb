@@ -1,0 +1,11 @@
+<tr>
+  <th scope="row"><%= workout.id %></th>
+  <td><%= workout.workout_type.collect{ |ic| [ic.name] }.join(", ") %></td>
+  <td><%= workout.name %></td>
+  <td><%= workout.description %></td>
+  <td class="crud-options">
+    <%= link_to "Show", workout_path(workout) %>
+    <%= link_to "Edit", edit_workout_path(workout) %>
+    <%= link_to "Destroy", {:controller => :workouts, :action => 'destroy', :id => workout.id }, :method => :delete, local: true, data: { turbo: false } %>
+  </td>
+</tr>

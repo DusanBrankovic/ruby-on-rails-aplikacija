@@ -1,0 +1,17 @@
+<%= form_with(model: workout_workout_type) do |form| %>
+  <% if workout_workout_type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(workout_workout_type.errors.count, "error") %> prohibited this workout_workout_type from being saved:</h2>
+
+      <ul>
+        <% workout_workout_type.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

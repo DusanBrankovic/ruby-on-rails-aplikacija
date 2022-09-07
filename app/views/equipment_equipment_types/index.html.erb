@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Equipment Equipment Types</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @equipment_equipment_types.each do |equipment_equipment_type| %>
+      <tr>
+        <td><%= link_to 'Show', equipment_equipment_type %></td>
+        <td><%= link_to 'Edit', edit_equipment_equipment_type_path(equipment_equipment_type) %></td>
+        <td><%= link_to 'Destroy', equipment_equipment_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Equipment Equipment Type', new_equipment_equipment_type_path %>

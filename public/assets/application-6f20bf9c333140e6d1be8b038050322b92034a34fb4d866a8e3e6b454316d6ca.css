@@ -1,0 +1,30 @@
+@import "bootstrap";
+@import "font-awesome";
+
+label {
+  font-weight: bold;
+}
+
+.crud-options {
+  text-align: center;
+}
+
+.crud-options form {
+  display: inline;
+  padding: 0;
+}
+
+.crud-options form button {
+  padding: 0;
+  vertical-align: inherit;
+}
+
+.recipe-ratings form {
+  display: inline;
+  padding: 0;
+}
+
+.recipe-ratings form button {
+  padding: 0;
+  vertical-align: inherit;
+}

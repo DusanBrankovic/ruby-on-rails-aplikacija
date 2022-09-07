@@ -1,0 +1,16 @@
+<%= render "shared/header" %>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <h3 class="card-header py-3">Kreiraj tip treninga</h3>
+        <div class="card-body">
+          <%= render "shared/flash" %>
+          <%= render "form", workout_type: @workout_type, edit: false %>
+          <%= link_to 'Nazad', workout_types_path, class: "btn btn-danger" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<%= render "shared/header" %>
+
+<div class="container mt-5">
+  <div class="p-5 bg-light rounded text-center mb-5">
+    <h3 class="display-5">Lista tipova opreme</h3>
+  </div>
+  <%= render "shared/flash" %>
+  
+  <div class="center"> <%= will_paginate %> </div>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Naziv</th>
+        <th scope="col">Opis</th>
+        <th scope="col", class="center">Opcije</th>
+      </tr>
+      </thead>
+      <tbody>
+        <ul class="equipment_types">
+          <%= render @equipment_types %>
+        </ul>
+      </tbody>
+    </table>
+  </div>
+  
+  <div class="center"> <%= will_paginate %> </div>
+  <p class="center">
+    <%= link_to "Dodaj novi tip opreme", new_equipment_type_path, class: "btn btn-success" %>
+  </p>
+</div>

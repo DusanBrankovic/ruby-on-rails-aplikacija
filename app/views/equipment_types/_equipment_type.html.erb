@@ -1,0 +1,10 @@
+<tr>
+  <th scope="row"><%= equipment_type.id %></th>
+  <td><%= equipment_type.name %></td>
+  <td><%= equipment_type.description %></td>
+  <td class="crud-options">
+    <%= link_to "Show", equipment_type_path(equipment_type) %>
+    <%= link_to "Edit", edit_equipment_type_path(equipment_type) %>
+    <%= link_to "Destroy", {:controller => :equipment_types, :action => 'destroy', :id => equipment_type.id }, :method => :delete, local: true, data: { turbo: false } %>
+  </td>
+</tr>

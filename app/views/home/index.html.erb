@@ -1,0 +1,26 @@
+<%= render "shared/header" %>
+
+<div class="container mt-5">
+  <%= render "shared/flash" %>
+  
+  </div>
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th scope="col">Ime trenera</th>
+        <th scope="col">Naziv</th>
+        <th scope="col">Opis</th>
+      </tr>
+      </thead>
+      <tbody>
+        <% @workouts.each do |workout| %>
+          <tr>
+            <td><%= User.find(workout.user_id).first_name %> <%= User.find(workout.user_id).last_name %></td>
+            <td><a href="<%= workout_path(workout) %>"><%= workout.name %></a></td>
+            <td><%= workout.description %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

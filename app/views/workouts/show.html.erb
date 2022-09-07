@@ -1,0 +1,47 @@
+<%= render "shared/header" %>
+
+<div class="container mt-5">
+  <%= render "shared/flash" %>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <h3 class="card-header py-3">Pregled treninga</h3>
+        <table class="table table-bordered">
+          <tbody>
+          <tr>
+            <th scope="row">Tipovi</th>
+            <td><%= @workout.workout_type.collect{ |ic| [ic.name] }.join(", ") %></td>
+          </tr>
+          <tr>
+            <th scope="row">Naziv</th>
+            <td><%= @workout.name %></td>
+          </tr>
+          <tr>
+            <th scope="row">Opis</th>
+            <td><%= @workout.description %></td>
+          </tr>
+          </tbody>
+        </table>
+        <% if is_logged_in? && (current_user == @workout.user || is_current_user_of_type?('admin_user')) %>
+          <%= link_to "Izmeni trening", edit_workout_path(@workout), class: "btn btn-warning" %>
+        <% end %>
+        <hr/>
+         <div class="card-body">
+          <% @workout.exercise.each_with_index do |exercise, i| %>
+            <h5 class="mb-0"><b>Vezba <%= (i+1).to_s %></b></h5>
+            <p class="mb-0"><b>Naziv: <%= exercise.name %> Opis: <%= exercise.description %></b></p>
+            <hr/>
+          <% end %>
+        </div>
+      </div>
+      <% if is_logged_in? && (current_user == @workout.user || is_current_user_of_type?('admin_user')) %>
+        <div class="card mt-3">
+          <h3 class="card-header py-3">Dodaj vezbu</h3>
+          <div class="card-body">
+            <%= render "exercises/form", exercise: @exercise, workout: @workout %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

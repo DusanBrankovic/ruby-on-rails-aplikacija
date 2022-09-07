@@ -1,0 +1,10 @@
+<tr>
+  <th scope="row"><%= workout_type.id %></th>
+  <td><%= workout_type.name %></td>
+  <td><%= workout_type.description %></td>
+  <td class="crud-options">
+    <%= link_to "Show", workout_type_path(workout_type) %>
+    <%= link_to "Edit", edit_workout_type_path(workout_type) %>
+    <%= link_to "Destroy", {:controller => :workout_types, :action => 'destroy', :id => workout_type.id }, :method => :delete, local: true, data: { turbo: false } %>
+  </td>
+</tr>
