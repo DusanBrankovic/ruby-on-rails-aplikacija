@@ -1,5 +1,4 @@
 module UsersHelper
-  include SessionsHelper
 
   def current_user_type
     @current_user_type ||= current_user.user_type
